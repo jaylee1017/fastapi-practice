@@ -20,25 +20,6 @@ def health_check_handler():
     return {"ping": "pong"}
 
 
-todo_data = {
-    1: {
-        "id": 1,
-        "contents": "실전! FastAPI 섹션 0 수강",
-        "is_done": True,
-    },
-    2: {
-        "id": 2,
-        "contents": "실전! FastAPI 섹션 1 수강",
-        "is_done": False,
-    },
-    3: {
-        "id": 3,
-        "contents": "실전! FastAPI 섹션 2 수강",
-        "is_done": False,
-    }
-}
-
-
 # 쿼리 파라미터 > 함수의 인자로 전달 > Swagger에서 사용자 입력받음
 # order 순서를 지정하거나, 특정 값을 가진 데이터만을 조회 가능
 
@@ -98,8 +79,9 @@ def delete_todo_handler(todo_id: int,
     todo: ToDo | None = get_todo_by_todo_id(session=session, todo_id=todo_id)
     if not todo:
         raise HTTPException(status_code=404, detail="ToDo Not Found")
-
     delete_todo(session=session, todo_id=todo_id)
+
+
 # body가 비어서 리턴됨 (only header만 리턴됨)
 
 ''' docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=todos -e MYSQL_DATABASE=todos -d -v todos:/db --name todos mysql:8.0

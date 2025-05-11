@@ -33,3 +33,4 @@ def update_todo(session: Session, todo: ToDo) -> ToDo:
 def delete_todo(session: Session, todo_id: int) -> None:
     session.execute(delete(ToDo).where(ToDo.id == todo_id))
     session.commit()
+
