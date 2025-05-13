@@ -17,3 +17,10 @@ class ToDoSchema(BaseModel):
 class ToDoListSchema(BaseModel):
     todos: List[ToDoSchema]
     # 리팩터링 기능 -> 자동으로 이름 모두 변경.. 등의 기능!
+
+
+class UserSchema(BaseModel):
+    id: int
+    username: str
+    class Config:
+        orm_mode = True

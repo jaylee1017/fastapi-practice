@@ -1,10 +1,12 @@
 from fastapi import FastAPI
 
-from api import todo
+from api import todo, user
 
 app = FastAPI()
 app.include_router(todo.router)
+app.include_router(user.router)
 
+# httpx == 0.27.2
 
 # 안에서 type 유효성 검사등을 거침
 
